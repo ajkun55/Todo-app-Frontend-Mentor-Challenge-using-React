@@ -26,7 +26,10 @@ function App() {
   const inputRef = useRef();
   const [isDark, setIsDark] = useState(false);
 
-  tasks.length === 0 ? setTasks(initialState) : null;
+   useEffect(function(){
+    tasks.length === 0 ? setTasks(initialState) : null;
+    handleAll()
+  },[])
 
   function addTask(e) {
     e.preventDefault();
