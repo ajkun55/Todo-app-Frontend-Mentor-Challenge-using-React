@@ -24,7 +24,7 @@ function App() {
   const [tasks, setTasks] = useLocalStorageState([]);
   const [filteredTasks, setFilteredTasks] = useState(tasks);
   const inputRef = useRef();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
    useEffect(function(){
     tasks.length === 0 ? setTasks(initialState) : null;
