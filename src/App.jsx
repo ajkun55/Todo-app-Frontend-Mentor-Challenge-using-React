@@ -28,7 +28,7 @@ function App() {
 
    useEffect(function(){
     tasks.length === 0 ? setTasks(initialState) : null;
-    handleAll()
+    setFilteredTasks(tasks);
   },[])
 
   function addTask(e) {
