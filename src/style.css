@@ -1,0 +1,275 @@
+@import url("./reset.css");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap");
+
+:root {
+  --background-color: hsl(236, 33%, 95%);
+  --form-color: hsl(0, 0%, 98%);
+  --background: url("/images/bg-mobile-light.jpg");
+  --primary-text-color: hsl(235, 21%, 11%);
+  --secondary-text-color: hsl(236, 9%, 61%);
+  --text-hover: hsl(235, 19%, 35%);
+  --text-hover-2: hsl(235, 19%, 45%);
+  --shadow-color: hsl(270, 7%, 84%);
+  --border-color: hsl(236, 33%, 90%);
+  --fw-7: 700;
+  --Bright-Blue: hsl(220, 98%, 61%);
+
+  --Very-Light-Gray: hsl(0, 0%, 98%); /**/
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%); /**/
+  --Light-Grayish-Blue: hsl(233, 11%, 84%); /**/
+  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+  --Very-Dark-Blue: hsl(235, 21%, 11%); /**/
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%); /**/
+  --Light-Grayish-Blue: hsl(234, 39%, 85%); /**/
+  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue-2: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue-2: hsl(237, 14%, 26%); /**/
+}
+
+[data-theme="dark"] {
+  --background-color: hsl(235, 21%, 11%);
+  --form-color: hsl(235, 24%, 19%);
+  --primary-text-color: hsl(234, 39%, 85%);
+  --secondary-text-color: hsl(234, 11%, 52%);
+  --text-hover: hsl(236, 33%, 92%);
+  --text-hover-2: hsl(236, 33%, 90%);
+  --shadow-color: transparent;
+  --border-color: hsl(233, 14%, 35%);
+  --background: url("/images/bg-mobile-dark.jpg");
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  background: var(--background);
+  background-repeat: no-repeat;
+  background-size: 100% 200px;
+}
+
+#root {
+  height: 100%;
+}
+.App {
+  background: linear-gradient(
+    to bottom,
+    transparent 200px,
+    var(--background-color) 200px 100%
+  );
+  height: 100%;
+}
+
+@media (width > 45em) {
+  :root {
+    --background: url("/images/bg-desktop-light.jpg");
+  }
+  [data-theme="dark"] {
+    --background: url("/images/bg-desktop-dark.jpg");
+  }
+  body {
+    background-size: 100% 300px;
+  }
+  .App {
+    background: linear-gradient(
+      to bottom,
+      transparent 0 300px,
+      var(--background-color) 300px 100%
+    );
+  }
+}
+
+main {
+  width: min(80%, 540px);
+  margin: 0 auto;
+}
+
+.header,
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header {
+  background: transparent;
+  padding-block: 3rem;
+  color: var(--Very-Light-Gray);
+  letter-spacing: 10px;
+}
+
+form,
+.item,
+.controller {
+  background-color: var(--form-color);
+  padding: 1rem 1.5rem;
+}
+
+form {
+  margin-block: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.lists {
+  box-shadow: 0 15px 2rem 0 var(--shadow-color);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+button,
+input {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+form button {
+  color: var(--secondary-text-color);
+  opacity: 0;
+  text-transform: uppercase;
+}
+
+form button:hover {
+  opacity: 1;
+}
+
+/*                                            */
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  border: 1px solid var(--Light-Grayish-Blue);
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  outline: 1px solid linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background: url("/images/icon-check.svg") no-repeat,
+    linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-position: center;
+}
+
+/*                                            */
+
+.task-name {
+  margin-left: 4rem;
+  color: var(--primary-text-color);
+  cursor: pointer;
+}
+
+.close-btn {
+  opacity: 0;
+}
+
+.item div:hover + .close-btn {
+  opacity: 1;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}
+
+.toggleTheme {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.controller {
+  display: grid;
+  grid-template-areas: "left clear" "btns btns";
+  padding-top: 1rem;
+  gap: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  color: var(--Dark-Grayish-Blue);
+}
+
+.all {
+  color: var(--Bright-Blue) !important;
+}
+
+.controller .btns button {
+  color: var(--secondary-text-color);
+  font-weight: var(--fw-7);
+}
+
+.controller .btns button:hover {
+  color: var(--text-hover);
+}
+
+.completed-task {
+  text-decoration: line-through;
+  color: var(--Dark-Grayish-Blue);
+}
+
+@media (width > 45em) {
+  .controller {
+    grid-template-areas: "left btns clear";
+  }
+}
+.btns {
+  grid-area: btns;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.left-part {
+  grid-area: left;
+}
+.clear-btn {
+  grid-area: clear;
+  color: var(--Dark-Grayish-Blue);
+}
+.clear-btn:hover {
+  color: var(--text-hover-2);
+}
+.d-text {
+  text-align: center;
+  color: var(--secondary-text-color);
+  margin-block: 2rem;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin-top: 4rem;
+  color: var(--primary-text-color);
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
